@@ -1,18 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { joinMission, leaveMission } from '../../redux/mission/missions';
 
-const MissionItem = ({ mission }) => (
-  <tr>
-    <td className="fw-bold">{mission.mission_name}</td>
-    <td>
-      <p>{mission.mission_description}</p>
-    </td>
-    <td className="text-center">
-      <Button />
-    </td>
-  </tr>
-);
+const MissionItem = ({ mission }) => {
+  const dispatch = useDispatch();
+
+  const handleJoinLeaveMission = () => {
+    if (mission.isJoined) {
+      dispatch(leaveMission(mission.mission_id));
+    } else {
+      dispatch(joinMission(mission.mission_id));
+    }
+  };
+
+  return (
+    <tr>
+      <td className="fw-bold">{mission.mission_name}</td>
+      <td>
+        <p>{mission.mission_description}</p>
+      </td>
+      <td className="text-center">
+        <Button variant={mission.isJoined ? 'outline-danger' : 'outline-primary'} onClick={handleJoinLeaveMission}>
+          {mission.isJoined ? 'Leave' : 'Join'}
+        </Button>
+      </td>
+    </tr>
+  );
+};
 
 MissionItem.propTypes = {
   mission: PropTypes.shape({
