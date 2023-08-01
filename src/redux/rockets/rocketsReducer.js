@@ -13,7 +13,6 @@ export function getRocketAPI(rockets) {
     type: rocket.rocket_type,
     flickrImages: rocket.flickr_images,
     description: rocket.description,
-    reserved: localStorage.getItem(`reservation_${rocket.id}`) === 'true', // Get reservation status from local storage
   }));
   return {
     type: GET_ROCKET_DATA,
@@ -31,7 +30,6 @@ export const fetchRocketDataFromAPI = () => async (dispatch) => {
 };
 
 export function rocketReservation(id) {
-  localStorage.setItem(`reservation_${id}`, 'true'); // Save reservation status to local storage
   return {
     type: ROCKET_RESERVATION,
     payload: id,
@@ -39,7 +37,6 @@ export function rocketReservation(id) {
 }
 
 export function cancelRocketReservation(id) {
-  localStorage.setItem(`reservation_${id}`, 'false');
   return {
     type: CANCEL_ROCKET_RESERVATION,
     payload: id,
