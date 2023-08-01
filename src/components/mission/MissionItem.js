@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
 const MissionItem = ({ mission }) => (
   <tr>
@@ -7,7 +8,9 @@ const MissionItem = ({ mission }) => (
     <td>
       <p>{mission.mission_description}</p>
     </td>
-    <td>{}</td>
+    <td className="text-center">
+      <Button />
+    </td>
   </tr>
 );
 
