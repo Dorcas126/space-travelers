@@ -1,7 +1,14 @@
 import React from 'react';
+import ProfileMissions from '../components/mission/ProfileMissions';
 
-const MyProfileContainer = () => (
-  <div className="profileContainer" />
+const ProfileContainer = () => (
+  <div className="profileContainer">
+    <div className="row">
+      <div className="col-md-6">
+        <ProfileMissions />
+      </div>
+    </div>
+  </div>
 );
 
-export default MyProfileContainer;
+export default ProfileContainer;
