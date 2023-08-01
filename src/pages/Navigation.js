@@ -19,7 +19,7 @@ const Navigation = () => {
     {
       id: 3,
       path: '/myprofile',
-      text: 'My Profile',
+      text: '| My Profile',
     },
   ];
 
