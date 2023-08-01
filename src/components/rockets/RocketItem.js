@@ -1,21 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types'; // Import the prop-types library
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import Button from 'react-bootstrap/Button';
 import { rocketReservation, cancelRocketReservation } from '../../redux/rockets/rocketsReducer';
 
-function RocketItem(props) {
+const RocketItem = ({ rocket }) => {
   const dispatch = useDispatch();
-  const { rocket } = props;
   const {
     id, name, flickrImages, description, reserved,
   } = rocket;
 
-  const rocketBooking = () => {
-    dispatch(rocketReservation(id));
-  };
-
-  const cancelRocketBooking = () => {
-    dispatch(cancelRocketReservation(id));
+  const clickHandler = () => {
+    if (!reserved) {
+      dispatch(rocketReservation(id));
+    } else {
+      dispatch(cancelRocketReservation(id));
+    }
   };
 
   return (
@@ -26,32 +26,31 @@ function RocketItem(props) {
         </div>
         <div className="col-md-8">
           <h3 className="mb-3">{name}</h3>
-          {reserved ? <span className="badge bg-primary">Reserved</span> : null}
+
+          {reserved && <span className="badge bg-primary">Reserved</span>}
           <p>{description}</p>
-          {reserved ? (
-            <button type="button" onClick={cancelRocketBooking} className="btn btn-danger">
-              Cancel Reservation
-            </button>
-          ) : (
-            <button type="button" onClick={rocketBooking} className="btn btn-primary">
-              Reserve Rocket
-            </button>
-          )}
+          <Button
+            onClick={clickHandler}
+            type="button"
+            variant={reserved ? 'outline-danger' : 'outline-primary'}
+          >
+            {reserved ? 'Cancel Reservation' : 'Reserve Rocket'}
+          </Button>
         </div>
       </div>
     </li>
   );
-}
+};
 
-// Define prop types for the RocketItem component
+export default RocketItem;
+
 RocketItem.propTypes = {
   rocket: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
+    types: PropTypes.string,
     flickrImages: PropTypes.arrayOf(PropTypes.string).isRequired,
     description: PropTypes.string.isRequired,
-    reserved: PropTypes.bool.isRequired,
+    reserved: PropTypes.bool,
   }).isRequired,
 };
-
-export default RocketItem;
