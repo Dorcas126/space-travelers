@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; // Import the prop-types library
 import { useDispatch } from 'react-redux';
 import { rocketReservation, cancelRocketReservation } from '../../redux/rockets/rocketsReducer';
 
@@ -26,13 +26,8 @@ function RocketItem(props) {
         </div>
         <div className="col-md-8">
           <h3 className="mb-3">{name}</h3>
-          <p>
-            {' '}
-            {reserved ? <span className="badge bg-primary">Reserved</span> : null}
-
-            {description}
-
-          </p>
+          {reserved ? <span className="badge bg-primary">Reserved</span> : null}
+          <p>{description}</p>
           {reserved ? (
             <button type="button" onClick={cancelRocketBooking} className="btn btn-danger">
               Cancel Reservation
@@ -48,6 +43,7 @@ function RocketItem(props) {
   );
 }
 
+// Define prop types for the RocketItem component
 RocketItem.propTypes = {
   rocket: PropTypes.shape({
     id: PropTypes.number.isRequired,
