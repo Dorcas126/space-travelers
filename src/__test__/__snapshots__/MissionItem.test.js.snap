@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MissionItem renders correctly 1`] = `
+<tr>
+  <td
+    className="fw-bold"
+  >
+    Test Mission
+  </td>
+  <td>
+    <p>
+      This is a test mission.
+    </p>
+  </td>
+  <td>
+    <span
+      className="badge bg-secondary"
+    >
+      Not a Member
+    </span>
+  </td>
+  <td
+    className="text-center"
+  >
+    <button
+      className="btn btn-outline-primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Join
+    </button>
+  </td>
+</tr>
+`;
