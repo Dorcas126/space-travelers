@@ -43,7 +43,6 @@ const missionStatus = (state, id, status) => {
       mission_id: mission.mission_id,
       mission_name: mission.mission_name,
       mission_description: mission.mission_description,
-      wikipedia: mission.wikipedia,
       isJoined: status,
     };
   });

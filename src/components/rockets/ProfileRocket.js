@@ -12,7 +12,7 @@ const ProfileRocketsContainer = () => {
   return (
     <>
       <h2>My Rockets</h2>
-      <div className="profile-rocket-list-container">
+      <div>
 
         {status && (
           <div className="alert alert-danger">{status}</div>

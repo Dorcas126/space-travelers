@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MissionsList renders correctly 1`] = `
+<div
+  className="table-responsive"
+>
+  <table
+    className="table table-striped table-bordered"
+  >
+    <thead>
+      <tr>
+        <th
+          className="fw-bold"
+        >
+          Mission
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Status
+        </th>
+        <th
+          className="text-center"
+        >
+          Join/Leave
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</div>
+`;

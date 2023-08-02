@@ -10,7 +10,7 @@ const ProfileMissions = () => {
     if (joinedMissions.length) {
       return joinedMissions.map((mission) => (
         <li key={mission.mission_id} className="list-group-item">
-          <p className="mission-name">
+          <p>
             {mission.mission_name}
           </p>
         </li>
