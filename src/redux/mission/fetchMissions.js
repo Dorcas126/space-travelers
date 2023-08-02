@@ -9,15 +9,13 @@ const fetchMissions = async () => {
     }
 
     const missionsData = await response.json();
-
     if (!Array.isArray(missionsData)) {
       throw new Error('Invalid response format. Expected an array of missions.');
     }
 
     return missionsData;
   } catch (error) {
-    console.error('Error fetching missions:', error);
-    throw error;
+    throw new Error('Error fetching missions:', error);
   }
 };
 

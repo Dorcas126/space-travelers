@@ -16,8 +16,7 @@ const getRocketData = async () => {
     const rocketData = await response.json();
     return rocketData;
   } catch (error) {
-    console.error('Error fetching rocket data:', error.message);
-    throw error;
+    throw new Error('Error  fetching rocket data:', error.message);
   }
 };
 
