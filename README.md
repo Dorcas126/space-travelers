@@ -68,7 +68,7 @@ The My Profile section displays all reserved rockets and space missions.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [🔗 Live Demo Link](https://Dorcas126.github.io/space-travelers/)
+- [🔗 Live Demo Link](https://dorcaskikospacetravelers.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
