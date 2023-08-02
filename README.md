@@ -50,7 +50,7 @@
 
 ### Rockets 
 
-The Rockets section displays a list of all available SpaceX rockets. Users can book each rocket by clicking the reservation button or cancel the previously made booking. The same layout is used to form the Dragons section [added only if your team has 3 members].
+The Rockets section displays a list of all available SpaceX rockets. Users can book each rocket by clicking the reservation button or cancel the previously made booking. 
 
 ### Missions
 
