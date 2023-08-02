@@ -1,13 +1,13 @@
 import rocketAPI from './rocketAPI';
-// Constants
+
+const initialState = [];
+let Loading = false;
+
 const GET_ROCKET_DATA = 'spacetravelers/rockets/GET_ROCKET_DATA';
 const ROCKET_RESERVATION = 'spacetravelers/rockets/ROCKET_RESERVATION';
 const CANCEL_ROCKET_RESERVATION = 'spacetravelers/rockets/CANCEL_ROCKET_RESERVATION';
 
-// Initial State
-const initialState = [];
-
-function getRocketData(rockets) {
+export function getRocketAPI(rockets) {
   const APIRocketData = rockets.map((rocket) => ({
     id: rocket.id,
     name: rocket.rocket_name,
@@ -22,10 +22,12 @@ function getRocketData(rockets) {
 }
 
 export const fetchRocketDataFromAPI = () => async (dispatch) => {
+  if (Loading) return;
   setTimeout(async () => {
     const response = await rocketAPI.getRocketData();
-    dispatch(getRocketData(response));
+    dispatch(getRocketAPI(response));
   }, 1000);
+  Loading = true;
 };
 
 export function rocketReservation(id) {
@@ -42,18 +44,16 @@ export function cancelRocketReservation(id) {
   };
 }
 
-function updateRocketReservationStatus(state, rocketId, reserved) {
-  return state.map((rocket) => (rocket.id !== rocketId ? rocket : { ...rocket, reserved }));
-}
-
 export default function reducerRockets(state = initialState, action) {
   switch (action.type) {
     case GET_ROCKET_DATA:
       return action.payload;
     case ROCKET_RESERVATION:
-      return updateRocketReservationStatus(state, action.payload, true);
+      return state.map((rocket) => (
+        rocket.id !== action.payload ? rocket : { ...rocket, reserved: true }));
     case CANCEL_ROCKET_RESERVATION:
-      return updateRocketReservationStatus(state, action.payload, false);
+      return state.map((rocket) => (
+        rocket.id !== action.payload ? rocket : { ...rocket, reserved: false }));
     default:
       return state;
   }
